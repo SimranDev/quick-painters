@@ -1,3 +1,5 @@
+import Head from 'next/head'
+
 import { ThemeProvider } from '@mui/material'
 
 import { theme } from '../../styles/theme'
@@ -10,10 +12,15 @@ export type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>Quick Painters</title>
+      </Head>
+      <ThemeProvider theme={theme}>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </ThemeProvider>
+    </>
   )
 }
