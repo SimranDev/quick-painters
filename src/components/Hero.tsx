@@ -44,12 +44,15 @@ export default function Hero({ runTransition = false }: HeroProps) {
           justifyContent="center"
         >
           <div>
-            <Typography variant="h6" fontWeight="600">
+            <Typography variant="h5" fontWeight="600">
               Commercial & Residential
             </Typography>
 
             <Typography variant="h1" fontWeight="600" fontSize={{ xs: '2.5rem', sm: '3.2rem' }}>
               Painting Services
+            </Typography>
+            <Typography variant="h5" sx={{ fontStyle: 'italic' }} fontWeight="600">
+              Professionally Executed Service + Competitive Price
             </Typography>
           </div>
           <Link href="tel:0224708620" style={{ color: '#10069F' }}>

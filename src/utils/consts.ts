@@ -1,4 +1,4 @@
-export const EMAILJS_SERVICE_ID = 'service_wlrm7c1'
+export const EMAILJS_SERVICE_ID = 'service_urfooan'
 export const EMAILJS_TEMPLATE_ID = 'template_x9xhpkm'
 export const EMAILJS_PUBLIC_KEY = 'ujwamRExJHw3Jv-zA'
 
