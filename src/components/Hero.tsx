@@ -56,14 +56,17 @@ export default function Hero({ runTransition = false }: HeroProps) {
             </Typography>
           </div>
           <Link href="tel:0224708620" style={{ color: '#10069F' }}>
-            <Typography variant="h5" fontWeight="600">
+            <Typography variant="h6" fontWeight="600">
               Call or WhatsApp
+            </Typography>{' '}
+            <Typography variant="h6" fontWeight="600">
+              Laura Pham: +64 224708620
             </Typography>{' '}
           </Link>
           <Grow timeout={300} in={runTransition} easing={theme.transitions.easing.easeIn}>
             <Button
               variant="contained"
-              sx={{ width: '10rem', fontWeight: '600', fontSize: '1rem' }}
+              sx={{ width: '12rem', fontWeight: '600', fontSize: '1rem' }}
               onClick={() => scrollTo('quote-form')}
               endIcon={<FormatPaintIcon />}
             >

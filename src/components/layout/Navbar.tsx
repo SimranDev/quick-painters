@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -41,9 +40,17 @@ export default function Navbar({}: NavbarProps) {
     >
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-          <Link href="/">
+          <Box color="primary.main" sx={{ cursor: 'pointer' }}>
+            <Typography variant="h6" lineHeight={1} fontWeight={600}>
+              KIA
+            </Typography>
+            <Typography variant="h6" lineHeight={1} fontWeight={600}>
+              ORA
+            </Typography>
+          </Box>
+          {/* <Link href="/">
             <Image src="/images/logo.svg" alt="Quick Painters" quality={100} width={90} height={50} />
-          </Link>
+          </Link> */}
 
           <Box sx={{ display: { xs: 'flex', md: 'none' }, color: 'info.main', marginLeft: 'auto' }}>
             <IconButton size="large" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">

@@ -23,7 +23,7 @@ export default function Footer({}: FooterProps) {
       </Stack>
 
       <Typography variant="subtitle2" sx={{ opacity: 0.5, fontSize: '0.8rem', color: 'white' }} textAlign="center">
-        © Copyright 2022 Housing Master Ltd trading as Quick Painters. All Rights Reserved.
+        © Copyright 2022 Housing Master Ltd trading as Kia Ora. All Rights Reserved.
       </Typography>
     </Stack>
   )
