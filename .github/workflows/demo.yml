@@ -22,3 +22,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Get branch names.
+        id: branch-names
+        uses: tj-actions/branch-names@v7
+
+      - run: echo "Running on pr: ${{ steps.branch-name.outputs.ref_branch }}"
