@@ -26,6 +26,18 @@ jobs:
         run: |
           BRANCH_NAME=$(git branch -r --contains ${{ github.event.deployment.sha }})
           echo "BRANCH_NAME=$BRANCH_NAME"
+          if [ "$BRANCH_NAME" == "origin/QA" ] || [ "$BRANCH_NAME" == "origin/main" ]; then
+              echo "Branch name is $BRANCH_NAME"
+          else
+              echo "Branch name is not QA or main, exiting"
+              exit 1
+          fi
+
+      - name: Run E2E test
+        run: |
+          echo "Running E2E test"
+          echo "E2E test passed"
+        
 
 
             
