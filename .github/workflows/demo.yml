@@ -19,6 +19,9 @@ jobs:
             GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
 
+      - name: Fetch all branches
+        run: git fetch --all
+
       - name: Check if SHA is on QA or main
         run: |
           BRANCH_NAME=$(git branch -r --contains ${{ github.event.deployment.sha }})
