@@ -11,10 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Dump GitHub context
         env:
             GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+
+     -
 
       - name: Check if SHA is on QA or main
         run: echo $(git branch -r --contains ${{ github.event.deployment.sha }})
