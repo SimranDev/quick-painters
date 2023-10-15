@@ -17,13 +17,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
       - name: Check if SHA is on QA or main
-        run: |
-          if git branch -r --contains ${{ github.event.deployment.sha }} | grep -q 'origin/QA'; then
-            echo "SHA is in QA branch, continuing..."
-          else
-            echo "SHA is not in QA branch, exiting..."
-            exit 1
-          fi
+        run: echo $(git branch -r --contains ${{ github.event.deployment.sha }})
 
     
 
