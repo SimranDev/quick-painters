@@ -20,7 +20,9 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
       - name: Check if SHA is on QA or main
-        run : echo $(git branch -r --contains ${{ github.event.deployment.sha }}) | grep -q 'origin/qa' && echo "QA" || echo "MAIN"
-    
+        run: |
+          BRANCH_NAME=$(git branch -r --contains ${{ github.event.deployment.sha }})
+          echo "BRANCH_NAME=$BRANCH_NAME"
+
 
             
