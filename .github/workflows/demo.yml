@@ -1,13 +1,14 @@
 name: GitHub Actions Demo
-run-name: ${{ github.event.deployment_status.payload.environment }}
+
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
 on:
   deployment_status:
-    branches:
-      - 'QA'
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && github.ref == 'refs/heads/QA'
     steps:
       - name: Dump GitHub context
         env:
