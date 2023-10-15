@@ -1,28 +1,42 @@
 name: GitHub Actions Demo
 
-# get the actor and branch name in run-name
-run-name: ${{ github.actor }} triggered E2E on branch ${{ github.ref.name }} 🚀
+run-name: E2E on SHA: ${{ github.event.deployment.sha }}
 
 on:
   deployment_status:
 
 jobs:
-  Explore-GitHub-Actions:
+  Find-branch-name:
     runs-on: ubuntu-latest
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && github.ref == 'refs/heads/QA'
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Dump GitHub context
         env:
             GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner. X"
-      - name: List files in the repository
+
+      - name: Fetch all branches
+        run: git fetch --all
+
+      - name: Check if SHA is on QA or main
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          BRANCH_NAME=$(git branch -r --contains ${{ github.event.deployment.sha }} | tr -d '[:space:]')
+          echo "BRANCH_NAME=$BRANCH_NAME"
+          if [ "$BRANCH_NAME" == "origin/QA" ] || [ "$BRANCH_NAME" == "origin/main" ]; then
+              echo "Branch name is $BRANCH_NAME"
+          else
+              echo "Branch name is not QA or main, exiting"
+              exit 1
+          fi
+
+      - name: Run E2E test
+        run: |
+          echo "Running E2E test"
+          echo "E2E test passed"
+        
+
+
+            
