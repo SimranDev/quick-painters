@@ -1,7 +1,7 @@
 name: GitHub Actions Demo
 
 # get the actor and branch name in run-name
-run-name: ${{ github.actor }} triggered E2E on branch ${{ github.ref.name }} 🚀
+run-name: ${{ github.actor }} triggered E2E on SHA:${{ github.event.deployment.sha }} 🚀
 
 on:
   deployment_status:
