@@ -25,5 +25,5 @@ jobs:
       - name: Get branch names.
         id: branch-names
         uses: tj-actions/branch-names@v7
-
-      - run: echo "Running on pr: ${{ steps.branch-name.outputs.ref_branch }}"
+      - run: |
+           echo "Running on pr: ${{ steps.branch-name.outputs.ref_branch }}"
