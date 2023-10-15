@@ -7,22 +7,21 @@ on:
   deployment_status:
 
 jobs:
-  Explore-GitHub-Actions:
+  Find branch name:
     runs-on: ubuntu-latest
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && github.ref == 'refs/heads/QA'
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     steps:
       - name: Dump GitHub context
         env:
             GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner. X"
-      - name: List files in the repository
+
+      - name: Check if SHA is on QA or main
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          BRANCH_NAME=$(git branch -r --contains ${{ github.event.deployment.sha }} | grep -v HEAD | sed -e 's/^[[:space:]]*origin\///' | grep -E '^(main|qa)$')
+            echo "BRANCH_NAME=$BRANCH_NAME"
+            echo "::set-output name=branch_name::$BRANCH_NAME"
+
+    
+
+            
