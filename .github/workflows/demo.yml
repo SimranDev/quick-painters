@@ -24,7 +24,7 @@ jobs:
 
       - name: Check if SHA is on QA or main
         run: |
-          BRANCH_NAME=$(git branch --contains ${{ github.event.deployment.sha }})
+          BRANCH_NAME=$(git branch -r --contains ${{ github.event.deployment.sha }})
           echo "BRANCH_NAME=$BRANCH_NAME"
 
 
