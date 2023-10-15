@@ -6,11 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     steps:
-# log event details
       - name: Dump GitHub context
-            env:
-            GITHUB_CONTEXT: ${{ toJson(github) }}
-            run: echo "$GITHUB_CONTEXT"
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
