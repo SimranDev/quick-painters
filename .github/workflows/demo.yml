@@ -1,6 +1,6 @@
 name: GitHub Actions Demo
 
-run-name: E2E on SHA: ${{ github.event.deployment.sha }}
+run-name: Triggered E2E on SHA:${{ github.event.deployment.sha }}
 
 on:
   deployment_status:
