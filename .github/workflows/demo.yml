@@ -1,6 +1,10 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [deployment_status]
+# get branch change in run-name
+run-name: ${{ github.event.deployment_status.payload.environment }}
+on:
+  deployment_status:
+    branches:
+      - QA
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
