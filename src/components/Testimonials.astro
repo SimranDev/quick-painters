@@ -1,0 +1,177 @@
+---
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "Homeowner, Auckland",
+    image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600",
+    content: "Quick Painters transformed our home completely. The team was professional, punctual, and the quality of work exceeded our expectations. Would highly recommend!"
+  },
+  {
+    name: "Michael Thompson",
+    role: "Office Manager, Wellington",
+    image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
+    content: "We needed our office painted over a weekend to avoid business disruption. Quick Painters delivered on time and with excellent quality. Our staff was impressed with the new look!"
+  },
+  {
+    name: "Emma Wilson",
+    role: "Restaurant Owner, Christchurch",
+    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=600",
+    content: "The waterproofing service from Quick Painters saved our restaurant from potential water damage. Their team was knowledgeable and efficient. Great value for money."
+  },
+  {
+    name: "David Chen",
+    role: "Property Developer, Hamilton",
+    image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600",
+    content: "As a property developer, I need reliable contractors. Quick Painters has been my go-to for all painting projects. Consistent quality and excellent communication."
+  },
+  {
+    name: "Lisa Williams",
+    role: "School Principal, Tauranga",
+    image: "https://images.pexels.com/photos/3765114/pexels-photo-3765114.jpeg?auto=compress&cs=tinysrgb&w=600",
+    content: "Our school needed a refresh during the holidays. Quick Painters completed the job ahead of schedule and the classrooms look fantastic. The children love the bright new colors!"
+  }
+];
+---
+
+<section id="testimonials" class="py-20 bg-primary-900 text-white relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <defs>
+        <pattern id="pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M0 0L20 0L20 20L0 20Z" fill="none" stroke="currentColor" stroke-width="1"></path>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#pattern)"></rect>
+    </svg>
+  </div>
+  
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-sm font-semibold text-primary-300 uppercase tracking-wider">Testimonials</span>
+      <h2 class="mt-2 text-3xl font-bold sm:text-4xl font-heading">What Our Clients Say</h2>
+      <p class="mt-4 text-xl text-primary-200">
+        Don't just take our word for it. Hear from our satisfied customers across New Zealand.
+      </p>
+    </div>
+    
+    <div class="max-w-6xl mx-auto">
+      <!-- Testimonial Slider -->
+      <div class="testimonial-slider overflow-hidden">
+        <div class="testimonial-track flex">
+          {testimonials.map((testimonial, index) => (
+            <div class="testimonial-slide flex-none w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+              <div class="bg-white rounded-lg shadow-xl p-6 h-full flex flex-col text-slate-800 transform transition-transform duration-300 hover:-translate-y-2">
+                <!-- Quote Icon -->
+                <div class="mb-4 text-primary-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="opacity-20">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                </div>
+                
+                <!-- Content -->
+                <p class="flex-grow text-slate-600 mb-6">{testimonial.content}</p>
+                
+                <!-- Author -->
+                <div class="flex items-center mt-4">
+                  <img src={testimonial.image} alt={testimonial.name} class="w-12 h-12 rounded-full object-cover border-2 border-primary-100" />
+                  <div class="ml-4">
+                    <h4 class="font-semibold">{testimonial.name}</h4>
+                    <p class="text-sm text-slate-500">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Slider Controls -->
+      <div class="flex justify-center mt-8 space-x-4">
+        <button id="prev-testimonial" class="p-2 rounded-full bg-white bg-opacity-20 text-white hover:bg-opacity-30 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <button id="next-testimonial" class="p-2 rounded-full bg-white bg-opacity-20 text-white hover:bg-opacity-30 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.testimonial-track');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const prevButton = document.getElementById('prev-testimonial');
+    const nextButton = document.getElementById('next-testimonial');
+    
+    if (!track || !slides.length || !prevButton || !nextButton) return;
+    
+    let currentIndex = 0;
+    let slidesToShow = 1;
+    
+    // Set slides to show based on screen width
+    const updateSlidesToShow = () => {
+      if (window.innerWidth >= 1024) {
+        slidesToShow = 3;
+      } else if (window.innerWidth >= 768) {
+        slidesToShow = 2;
+      } else {
+        slidesToShow = 1;
+      }
+      goToSlide(currentIndex);
+    };
+    
+    const goToSlide = (index) => {
+      currentIndex = index;
+      
+      // Calculate maximum index based on slides to show
+      const maxIndex = slides.length - slidesToShow;
+      
+      // Ensure index is within bounds
+      if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+      }
+      if (currentIndex < 0) {
+        currentIndex = 0;
+      }
+      
+      const slideWidth = 100 / slidesToShow;
+      const offset = -currentIndex * slideWidth;
+      
+      track.style.transform = `translateX(${offset}%)`;
+      track.style.width = `${(slides.length / slidesToShow) * 100}%`;
+      
+      // Set each slide width
+      slides.forEach(slide => {
+        slide.style.width = `${slideWidth}%`;
+      });
+    };
+    
+    // Initialize
+    updateSlidesToShow();
+    
+    // Set up event listeners
+    prevButton.addEventListener('click', () => {
+      goToSlide(currentIndex - 1);
+    });
+    
+    nextButton.addEventListener('click', () => {
+      goToSlide(currentIndex + 1);
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', updateSlidesToShow);
+  });
+</script>
+
+<style>
+  .testimonial-track {
+    transition: transform 0.5s ease-in-out;
+  }
+</style>

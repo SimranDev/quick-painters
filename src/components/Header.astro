@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import Logo from '../assets/logo.png';
+---
+
+<header class="sticky top-0 z-50 w-full transition duration-300 bg-white bg-opacity-95 shadow-sm" id="header">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      <a href="/" class="flex items-center">
+        <img src="https://images.pexels.com/photos/4792511/pexels-photo-4792511.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Quick Painters Logo" class="h-10 w-10 object-cover rounded-full mr-3">
+        <span class="text-xl font-bold text-primary-800 font-heading">Quick Painters</span>
+      </a>
+      
+      <div class="hidden md:flex space-x-8">
+        <a href="/" class="text-slate-700 hover:text-primary-600 font-medium transition duration-200">Home</a>
+        <a href="#services" class="text-slate-700 hover:text-primary-600 font-medium transition duration-200">Services</a>
+        <a href="#about" class="text-slate-700 hover:text-primary-600 font-medium transition duration-200">About Us</a>
+        <a href="#testimonials" class="text-slate-700 hover:text-primary-600 font-medium transition duration-200">Testimonials</a>
+        <a href="/contact" class="text-slate-700 hover:text-primary-600 font-medium transition duration-200">Contact</a>
+      </div>
+      
+      <div class="hidden md:block">
+        <a href="/contact" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md shadow-sm transition duration-300 ease-in-out">
+          Get a Quote
+        </a>
+      </div>
+      
+      <button id="mobile-menu-button" class="md:hidden flex items-center p-2 rounded-md text-slate-700 hover:text-primary-600 hover:bg-slate-100">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+    <div class="container mx-auto px-4 py-3 space-y-1">
+      <a href="/" class="block px-3 py-2 rounded-md text-slate-700 hover:text-primary-600 hover:bg-slate-100 transition duration-200">Home</a>
+      <a href="#services" class="block px-3 py-2 rounded-md text-slate-700 hover:text-primary-600 hover:bg-slate-100 transition duration-200">Services</a>
+      <a href="#about" class="block px-3 py-2 rounded-md text-slate-700 hover:text-primary-600 hover:bg-slate-100 transition duration-200">About Us</a>
+      <a href="#testimonials" class="block px-3 py-2 rounded-md text-slate-700 hover:text-primary-600 hover:bg-slate-100 transition duration-200">Testimonials</a>
+      <a href="/contact" class="block px-3 py-2 rounded-md text-slate-700 hover:text-primary-600 hover:bg-slate-100 transition duration-200">Contact</a>
+      <a href="/contact" class="block px-3 py-2 mt-4 text-center text-white bg-primary-600 hover:bg-primary-700 rounded-md transition duration-300 ease-in-out">Get a Quote</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const header = document.getElementById('header');
+    
+    // Mobile menu toggle
+    mobileMenuButton?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileMenu?.querySelectorAll('a');
+    mobileLinks?.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu?.classList.add('hidden');
+      });
+    });
+    
+    // Header scroll behavior
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        header?.classList.add('shadow-md');
+        header?.classList.remove('shadow-sm');
+      } else {
+        header?.classList.remove('shadow-md');
+        header?.classList.add('shadow-sm');
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    // Initialize on page load
+    handleScroll();
+  });
+</script>
