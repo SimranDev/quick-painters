@@ -1,7 +1,7 @@
 {
-  "name": "quick-painters-website",
+  "name": "quick-painters",
   "type": "module",
-  "version": "0.1.0",
+  "version": "1.1",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -13,8 +13,8 @@
     "astro": "^5.2.5"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^5.1.0",
-    "tailwindcss": "^3.4.1",
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5.3.3"
   }
 }
