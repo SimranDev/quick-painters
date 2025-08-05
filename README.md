@@ -1,6 +1,6 @@
 # Quick Painters
 
-![Quick Painters Logo](src/assets/logo.png)
+<img src="src/assets/logo.png" alt="Quick Painters Logo" width="100" height="100">
 
 A modern, responsive website for Quick Painters - a professional painting services company based in New Zealand. Built with Astro, TailwindCSS, and TypeScript for optimal performance and developer experience.
 
