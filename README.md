@@ -4,7 +4,7 @@
 
 A modern, responsive website for Quick Painters - a professional painting services company based in New Zealand. Built with Astro, TailwindCSS, and TypeScript for optimal performance and developer experience.
 
-## ✨ Features
+## Features
 
 - **Modern Design**: Clean, professional layout with engaging visuals
 - **Responsive**: Mobile-first design that works perfectly on all screen sizes
