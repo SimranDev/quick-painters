@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 const currentYear = new Date().getFullYear();
 ---
 
@@ -7,6 +9,7 @@ const currentYear = new Date().getFullYear();
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-4">
       <!-- Company Info -->
       <div class="space-y-4">
+        <Image src={logo} alt="Quick Painters Logo" class="h-14 w-auto mb-2" />
         <h3 class="text-lg font-semibold font-heading">Quick Painters</h3>
         <p class="text-slate-300 text-sm max-w-xs">
           Professional painting services for both commercial and residential properties across New Zealand.
